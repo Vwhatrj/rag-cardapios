@@ -4,7 +4,11 @@ API em **Python + FastAPI** que responde perguntas sobre cardápios de restauran
 
 Tudo roda com custo zero: embeddings locais e a camada gratuita do Gemini.
 
-<img src="docs/post-linkedin.png" alt="Pergunta 'Quanto fica uma pizza Calabresa com borda recheada no Forno da Vila?' e a resposta real da API: R$ 61,00 (R$ 52,00 da pizza mais R$ 9,00 da borda), citando duas fontes" width="720">
+<img src="docs/swagger.png" alt="Documentação interativa (/docs) executando POST /perguntar com 'Tenho alergia a castanhas. Posso comer a Lasanha de Berinjela do Raiz Verde?'. Resposta 200: 'Não, a Lasanha de Berinjela do Raiz Verde contém castanhas e amêndoa, que são listadas como alergênicos.', com a fonte raiz-verde#lasanha-de-berinjela" width="760">
+
+<sub>Requisição real pela documentação interativa (`/docs`), com o Gemini respondendo e citando o trecho do cardápio de onde tirou a informação.</sub>
+
+> Outro projeto meu: [**classificador de avaliações em português**](https://github.com/Vwhatrj/classificador-avaliacoes), com fine-tuning do BERTimbau (95% de acerto), [demo no navegador](https://huggingface.co/spaces/Vwhtarj/classificador-avaliacoes) e análise de erros.
 
 ```http
 POST /perguntar
