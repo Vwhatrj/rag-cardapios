@@ -44,6 +44,7 @@ class PassoAPI(BaseModel):
 
 class RespostaAgenteAPI(RespostaAPI):
     passos: list[PassoAPI] = Field(description="As ferramentas que o agente chamou, na ordem")
+    chamadas_llm: int = Field(description="Quantas vezes o modelo foi chamado para chegar à resposta")
 
 
 def criar_app(indice: Indice | None = None, llm: LLMComFerramentas | None = None) -> FastAPI:
@@ -103,6 +104,7 @@ def criar_app(indice: Indice | None = None, llm: LLMComFerramentas | None = None
             fontes=[fonte(i) for i in r.fontes],
             modelo=estado["llm"].nome,
             passos=[PassoAPI(ferramenta=p.ferramenta, argumentos=p.argumentos, resultados=p.resultados) for p in r.passos],
+            chamadas_llm=r.chamadas_llm,
         )
 
     return app

@@ -7,8 +7,10 @@
 | Resposta correta | 97% (29/30) |
 | Fonte citada corretamente | 97% (29/30) |
 | **Aprovada (resposta + fonte)** | **97% (29/30)** |
-| Tempo de resposta (mediana · pior) | 4.5 s · 31.6 s |
-| Refeitas por erro do Gemini · ainda com erro | 0 · 0 |
+| Tempo de resposta (mediana · pior) | 6.9 s · 46.7 s |
+| Chamadas ao LLM por pergunta (média · máx) | 2.0 · 3 |
+| Tokens por pergunta (média: entrada + saída) | 2.345 + 75 |
+| Refeitas por erro do Gemini · ainda com erro | 3 · 0 |
 
 ## Por tipo de pergunta
 
@@ -27,7 +29,7 @@
 ## Falhas (1)
 
 **Tem hambúrguer vegano na Brasa & Pão?** (pegadinha)
-- Ferramentas: filtrar_pratos({"etiquetas": ["vegana"], "restaurante": "Brasa & Pão"})
+- Ferramentas: filtrar_pratos({"restaurante": "Brasa & Pão", "etiquetas": ["vegana"]})
 - Resposta: Não, não há hambúrgueres veganos no restaurante Brasa & Pão.
 - Faltou: vegetarian
 - Fontes citadas: nenhuma

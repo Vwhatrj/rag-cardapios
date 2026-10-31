@@ -43,6 +43,7 @@ class RespostaAgente:
     resposta: str
     fontes: list[str] = field(default_factory=list)
     passos: list[Passo] = field(default_factory=list)
+    chamadas_llm: int = 0  # turnos com o modelo; ferramentas pedidas no mesmo turno custam uma chamada só
 
 
 def separar_fontes(texto: str, ids_vistos: set[str]) -> tuple[str, list[str]]:
@@ -60,7 +61,7 @@ def responder(pergunta: str, ferramentas: Ferramentas, llm: LLMComFerramentas, m
     passos: list[Passo] = []
     ids_vistos: set[str] = set()
 
-    for _ in range(max_passos):
+    for turno in range(1, max_passos + 1):
         partes = llm.conversar(SISTEMA, conteudos, DECLARACOES)
         conteudos.append({"role": "model", "parts": partes})  # volta intacto: o Gemini exige o histórico como veio
         chamadas = [p["functionCall"] for p in partes if "functionCall" in p]
@@ -68,8 +69,8 @@ def responder(pergunta: str, ferramentas: Ferramentas, llm: LLMComFerramentas, m
             texto = "".join(p.get("text", "") for p in partes if not p.get("thought")).strip()
             resposta, fontes = separar_fontes(texto, ids_vistos)
             if not resposta or resposta == NAO_ENCONTREI:
-                return RespostaAgente(resposta or NAO_ENCONTREI, [], passos)
-            return RespostaAgente(resposta, fontes, passos)
+                return RespostaAgente(resposta or NAO_ENCONTREI, [], passos, turno)
+            return RespostaAgente(resposta, fontes, passos, turno)
 
         respostas = []
         for chamada in chamadas:
@@ -80,7 +81,7 @@ def responder(pergunta: str, ferramentas: Ferramentas, llm: LLMComFerramentas, m
             respostas.append({"functionResponse": {"name": chamada["name"], "response": resultado}})
         conteudos.append({"role": "user", "parts": respostas})
 
-    return RespostaAgente(NAO_CONCLUIU, [], passos)
+    return RespostaAgente(NAO_CONCLUIU, [], passos, max_passos)
 
 
 def resumo_passos(passos: list[Passo]) -> str:

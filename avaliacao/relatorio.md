@@ -6,11 +6,13 @@
 |---|---|
 | Busca: todos os trechos esperados no top 8 | 100% (27/27) |
 | Busca: recall médio | 100% |
-| Resposta correta | 97% (29/30) |
+| Resposta correta | 100% (30/30) |
 | Fonte citada corretamente | 100% (30/30) |
-| **Aprovada (resposta + fonte)** | **97% (29/30)** |
-| Tempo de resposta (mediana · pior) | 2.2 s · 11.1 s |
-| Refeitas por erro do Gemini · ainda com erro | 0 · 0 |
+| **Aprovada (resposta + fonte)** | **100% (30/30)** |
+| Tempo de resposta (mediana · pior) | 3.1 s · 32.0 s |
+| Chamadas ao LLM por pergunta (média · máx) | 1.0 · 1 |
+| Tokens por pergunta (média: entrada + saída) | 1.122 + 60 |
+| Refeitas por erro do Gemini · ainda com erro | 1 · 0 |
 
 ## Por tipo de pergunta
 
@@ -22,12 +24,8 @@
 | lista | 100% (2/2) |
 | segurança alimentar | 100% (1/1) |
 | pegadinha | 100% (2/2) |
-| comparar restaurantes | 50% (1/2) |
+| comparar restaurantes | 100% (2/2) |
 | fora do escopo | 100% (2/2) |
 | prompt injection | 100% (1/1) |
 
-## Falhas (1)
-
-**Quais restaurantes abrem às segundas-feiras?** (comparar restaurantes)
-- Resposta: Os restaurantes que abrem às segundas-feiras são: Brasa & Pão, Sakura Nori e Cantina Dona Lurdes.
-- Faltou: raiz verde
+## Falhas (0)

@@ -105,6 +105,7 @@ def main() -> None:
         if not llm:
             return linha
         inicio = time.perf_counter()
+        uso_antes = dict(llm.uso)
         try:
             if ferramentas:
                 r = agente.responder(caso["pergunta"], ferramentas, llm)
@@ -118,6 +119,9 @@ def main() -> None:
         except ErroLLM as erro:  # uma pergunta com erro conta como falha, sem derrubar a avaliação inteira
             texto, fontes = f"[ERRO] {erro}", []
         linha |= {"resposta": texto, "fontes_citadas": fontes, "segundos": round(time.perf_counter() - inicio, 2),
+                  "chamadas_llm": llm.uso["chamadas"] - uso_antes["chamadas"],
+                  "tokens_entrada": llm.uso["tokens_entrada"] - uso_antes["tokens_entrada"],
+                  "tokens_saida": llm.uso["tokens_saida"] - uso_antes["tokens_saida"],
                   **avaliar_resposta(caso, texto, fontes)}
         linha["ok"] = linha["resposta_ok"] and linha["citacao_ok"]
         return linha
@@ -195,6 +199,13 @@ def gerar_relatorio(resultados: list[dict], k: int, modelo: str | None, modo: st
         ]
         tempos = sorted(r["segundos"] for r in resultados)
         linhas.append(f"| Tempo de resposta (mediana · pior) | {tempos[len(tempos) // 2]:.1f} s · {tempos[-1]:.1f} s |")
+        com_uso = [r for r in resultados if "chamadas_llm" in r and not r["resposta"].startswith("[ERRO]")]
+        if com_uso:
+            chamadas = [r["chamadas_llm"] for r in com_uso]
+            entrada = sum(r["tokens_entrada"] for r in com_uso) / len(com_uso)
+            saida = sum(r["tokens_saida"] for r in com_uso) / len(com_uso)
+            linhas.append(f"| Chamadas ao LLM por pergunta (média · máx) | {sum(chamadas) / len(chamadas):.1f} · {max(chamadas)} |")
+            linhas.append(f"| Tokens por pergunta (média: entrada + saída) | {entrada:,.0f} + {saida:,.0f} |".replace(",", "."))
         refeitas = sum(1 for r in resultados if r.get("refeita"))
         erros = sum(1 for r in resultados if r["resposta"].startswith("[ERRO]"))
         linhas.append(f"| Refeitas por erro do Gemini · ainda com erro | {refeitas} · {erros} |")

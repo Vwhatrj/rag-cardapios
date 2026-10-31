@@ -18,7 +18,10 @@
     "fontes_citadas": [
       "brasa-e-pao#milkshake-de-ovomaltine"
     ],
-    "segundos": 1.32,
+    "segundos": 2.75,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1112,
+    "tokens_saida": 74,
     "resposta_ok": false,
     "citacao_ok": false,
     "faltou": [
@@ -47,7 +50,10 @@
     "fontes_citadas": [
       "sakura-nori#rodizio-completo"
     ],
-    "segundos": 13.11,
+    "segundos": 2.17,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1097,
+    "tokens_saida": 60,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -73,7 +79,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#suco-natural"
     ],
-    "segundos": 9.3,
+    "segundos": 1.92,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1016,
+    "tokens_saida": 69,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -102,17 +111,20 @@
     ],
     "busca_ok": false,
     "busca_recall": 0.4666666666666667,
-    "resposta": "Existem 7 itens veganos listados: Salada Tropical, Hambúrguer de Feijão-Preto, Moqueca de Banana-da-Terra, Prato do Dia, Kombucha da Casa e Lasanha de Berinjela no restaurante Raiz Verde, além do Yakisoba de Legumes no restaurante Sakura Nori.",
+    "resposta": "Existem 7 itens veganos listados nos cardápios: Salada Tropical, Hambúrguer de Feijão-Preto, Moqueca de Banana-da-Terra, Prato do Dia, Kombucha da Casa e Lasanha de Berinjela no Raiz Verde, além do Yakisoba de Legumes no Sakura Nori.",
     "fontes_citadas": [
       "raiz-verde#salada-tropical",
       "raiz-verde#hamburguer-de-feijao-preto",
       "raiz-verde#moqueca-de-banana-da-terra",
       "raiz-verde#prato-do-dia",
       "raiz-verde#kombucha-da-casa",
-      "raiz-verde#lasanha-de-berinjela",
-      "sakura-nori#yakisoba-de-legumes"
+      "sakura-nori#yakisoba-de-legumes",
+      "raiz-verde#lasanha-de-berinjela"
     ],
-    "segundos": 13.05,
+    "segundos": 6.63,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1148,
+    "tokens_saida": 206,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -136,13 +148,16 @@
     ],
     "busca_ok": false,
     "busca_recall": 0.4444444444444444,
-    "resposta": "Os pratos sem glúten que custam até R$ 30 são: Frango Grelhado com Legumes (R$ 28,00) e Omelete de Queijo e Espinafre (R$ 25,00) na Cantina Dona Lurdes, e o Mochi de Morango (R$ 18,00) no Sakura Nori.",
+    "resposta": "Os pratos sem glúten que custam até R$ 30 são: Frango Grelhado com Legumes (R$ 28,00) e Omelete de Queijo e Espinafre (R$ 25,00) na Cantina Dona Lurdes, e Mochi de Morango (R$ 18,00) no Sakura Nori.",
     "fontes_citadas": [
       "cantina-dona-lurdes#frango-grelhado-com-legumes",
       "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
       "sakura-nori#mochi-de-morango"
     ],
-    "segundos": 8.68,
+    "segundos": 51.35,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1048,
+    "tokens_saida": 171,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -151,7 +166,8 @@
       "pao de queijo"
     ],
     "proibido": [],
-    "ok": false
+    "ok": false,
+    "refeita": true
   },
   {
     "pergunta": "Tenho intolerância a lactose: quais hambúrgueres da Brasa & Pão posso pedir?",
@@ -170,7 +186,10 @@
     "busca_recall": 1.0,
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 5.46,
+    "segundos": 20.52,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1100,
+    "tokens_saida": 26,
     "resposta_ok": false,
     "citacao_ok": false,
     "faltou": [
@@ -201,7 +220,10 @@
       "sakura-nori#info",
       "raiz-verde#info"
     ],
-    "segundos": 11.84,
+    "segundos": 58.48,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1253,
+    "tokens_saida": 60,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -230,7 +252,10 @@
       "brasa-e-pao#frango-crispy",
       "forno-da-vila#diavola"
     ],
-    "segundos": 7.05,
+    "segundos": 8.57,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1076,
+    "tokens_saida": 77,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -258,7 +283,10 @@
     "fontes_citadas": [
       "forno-da-vila#margherita"
     ],
-    "segundos": 24.38,
+    "segundos": 10.02,
+    "chamadas_llm": 1,
+    "tokens_entrada": 972,
+    "tokens_saida": 62,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -287,7 +315,10 @@
       "cantina-dona-lurdes#info",
       "doce-atelie#info"
     ],
-    "segundos": 30.49,
+    "segundos": 3.79,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1412,
+    "tokens_saida": 97,
     "resposta_ok": false,
     "citacao_ok": true,
     "faltou": [
@@ -315,7 +346,10 @@
     "fontes_citadas": [
       "raiz-verde#kombucha-da-casa"
     ],
-    "segundos": 95.22,
+    "segundos": 2.12,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1105,
+    "tokens_saida": 54,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],

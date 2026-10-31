@@ -59,6 +59,8 @@ class Gemini:
         self.nome = modelo or os.environ.get("GEMINI_MODEL") or self._modelo_padrao()
         self._pensamento: dict | None = None
         self._pensamento_definido = False
+        # Acumulado desde a criação; quem quiser medir uma pergunta compara antes e depois
+        self.uso = {"chamadas": 0, "tokens_entrada": 0, "tokens_saida": 0}
 
     def _modelo_padrao(self) -> str:
         r = self._http.get(f"{API}/models", params={"pageSize": 200})
@@ -113,7 +115,13 @@ class Gemini:
             self._pensamento, self._pensamento_definido = pensamento, True
             break
         self._checar(r)
-        return (r.json().get("candidates") or [{}])[0]
+        dados = r.json()
+        uso = dados.get("usageMetadata", {})
+        self.uso["chamadas"] += 1
+        self.uso["tokens_entrada"] += uso.get("promptTokenCount", 0)
+        # Tokens de raciocínio também são cobrados como saída
+        self.uso["tokens_saida"] += uso.get("candidatesTokenCount", 0) + uso.get("thoughtsTokenCount", 0)
+        return (dados.get("candidates") or [{}])[0]
 
     def _post_com_retentativa(self, url: str, corpo: dict, tentativas: int = 4) -> httpx.Response:
         # A camada gratuita tem limite por minuto e às vezes demora ou cai: em 429/503 ou timeout, espera e tenta de novo

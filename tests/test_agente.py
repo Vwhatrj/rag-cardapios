@@ -44,6 +44,8 @@ def test_chamadas_em_paralelo_e_varios_turnos(ferramentas):
     r = agente.responder("pergunta composta", ferramentas, llm)
     assert [p.ferramenta for p in r.passos] == ["info_restaurantes", "filtrar_pratos", "buscar_cardapio"]
     assert r.fontes == ["raiz-verde#kombucha-da-casa"]
+    # 3 ferramentas, mas 3 chamadas ao modelo: as duas primeiras vieram no mesmo turno
+    assert r.chamadas_llm == 3
 
 
 def test_argumento_invalido_vira_erro_para_o_modelo_corrigir(ferramentas):
@@ -72,3 +74,18 @@ def test_rota_agente(indice):
     assert corpo["resposta"] == "O mais caro é o Rodízio Completo."
     assert corpo["fontes"][0]["restaurante"] == "Sakura Nori"
     assert corpo["passos"] == [{"ferramenta": "filtrar_pratos", "argumentos": {"decrescente": True, "limite": 1}, "resultados": 1}]
+    assert corpo["chamadas_llm"] == 2
+
+
+def test_gemini_soma_chamadas_e_tokens(monkeypatch):
+    import httpx
+
+    from app.llm import Gemini
+
+    resposta = {"candidates": [{"content": {"parts": [{"text": "{}"}]}}],
+                "usageMetadata": {"promptTokenCount": 900, "candidatesTokenCount": 40, "thoughtsTokenCount": 10}}
+    g = Gemini(chave="falsa", modelo="gemini-teste")
+    g._http = httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, json=resposta)))
+    g.gerar("s", "p")
+    g.gerar("s", "p")
+    assert g.uso == {"chamadas": 2, "tokens_entrada": 1800, "tokens_saida": 100}

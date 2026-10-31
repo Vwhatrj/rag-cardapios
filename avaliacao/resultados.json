@@ -18,12 +18,16 @@
     "fontes_citadas": [
       "forno-da-vila#margherita"
     ],
-    "segundos": 3.05,
+    "segundos": 6.91,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1059,
+    "tokens_saida": 45,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
     "proibido": [],
-    "ok": true
+    "ok": true,
+    "refeita": true
   },
   {
     "pergunta": "O Forno da Vila abre na segunda-feira?",
@@ -44,7 +48,10 @@
     "fontes_citadas": [
       "forno-da-vila#info"
     ],
-    "segundos": 3.31,
+    "segundos": 32.01,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1077,
+    "tokens_saida": 42,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -70,7 +77,10 @@
     "fontes_citadas": [
       "forno-da-vila#info"
     ],
-    "segundos": 3.53,
+    "segundos": 8.11,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1049,
+    "tokens_saida": 48,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -92,12 +102,15 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "resposta": "Uma pizza Calabresa da Casa com borda recheada no Forno da Vila custa R$ 61,00 (R$ 52,00 da pizza mais R$ 9,00 da borda).",
+    "resposta": "A pizza Calabresa da Casa custa R$ 52,00 e, com a adição da borda recheada de catupiry ou cheddar (+ R$ 9,00), o valor total fica R$ 61,00.",
     "fontes_citadas": [
       "forno-da-vila#calabresa-da-casa",
       "forno-da-vila#info"
     ],
-    "segundos": 2.71,
+    "segundos": 4.42,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1065,
+    "tokens_saida": 104,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -123,7 +136,10 @@
     "fontes_citadas": [
       "forno-da-vila#diavola"
     ],
-    "segundos": 2.87,
+    "segundos": 20.28,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1059,
+    "tokens_saida": 70,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -149,7 +165,10 @@
     "fontes_citadas": [
       "sakura-nori#info"
     ],
-    "segundos": 2.91,
+    "segundos": 5.03,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1140,
+    "tokens_saida": 42,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -175,7 +194,10 @@
     "fontes_citadas": [
       "sakura-nori#info"
     ],
-    "segundos": 0.81,
+    "segundos": 2.52,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1142,
+    "tokens_saida": 43,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -197,11 +219,14 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "resposta": "No Sakura Nori, crianças de 6 a 10 anos pagam R$ 59,90 no rodízio.",
+    "resposta": "Uma criança de 8 anos paga R$ 59,90 no rodízio do Sakura Nori.",
     "fontes_citadas": [
       "sakura-nori#rodizio-completo"
     ],
-    "segundos": 1.4,
+    "segundos": 1.85,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1147,
+    "tokens_saida": 52,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -229,7 +254,10 @@
       "sakura-nori#mochi-de-morango",
       "sakura-nori#missoshiru"
     ],
-    "segundos": 1.65,
+    "segundos": 2.71,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1117,
+    "tokens_saida": 97,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -255,7 +283,10 @@
     "fontes_citadas": [
       "raiz-verde#info"
     ],
-    "segundos": 3.35,
+    "segundos": 2.29,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1155,
+    "tokens_saida": 32,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -285,7 +316,10 @@
       "raiz-verde#salada-tropical",
       "raiz-verde#kombucha-da-casa"
     ],
-    "segundos": 5.8,
+    "segundos": 4.61,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1162,
+    "tokens_saida": 149,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -311,7 +345,10 @@
     "fontes_citadas": [
       "raiz-verde#lasanha-de-berinjela"
     ],
-    "segundos": 2.17,
+    "segundos": 1.64,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1173,
+    "tokens_saida": 60,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -333,11 +370,14 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "resposta": "Não, o único hambúrguer vegetariano da Brasa & Pão é o Veggie de Cogumelos, que contém queijo coalho.",
+    "resposta": "Não, a Brasa & Pão não possui hambúrgueres veganos. O hambúrguer vegetariano disponível é o Veggie de Cogumelos, que contém queijo coalho.",
     "fontes_citadas": [
       "brasa-e-pao#veggie-de-cogumelos"
     ],
-    "segundos": 1.58,
+    "segundos": 3.81,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1120,
+    "tokens_saida": 75,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -363,7 +403,10 @@
     "fontes_citadas": [
       "brasa-e-pao#frango-crispy"
     ],
-    "segundos": 1.89,
+    "segundos": 3.3,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1086,
+    "tokens_saida": 49,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -390,7 +433,10 @@
       "brasa-e-pao#info",
       "brasa-e-pao#chope-pilsen-500-ml"
     ],
-    "segundos": 3.18,
+    "segundos": 2.49,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1087,
+    "tokens_saida": 100,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -416,7 +462,10 @@
     "fontes_citadas": [
       "brasa-e-pao#info"
     ],
-    "segundos": 1.52,
+    "segundos": 0.88,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1076,
+    "tokens_saida": 43,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -442,7 +491,10 @@
     "fontes_citadas": [
       "brasa-e-pao#combo-kids"
     ],
-    "segundos": 2.01,
+    "segundos": 1.16,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1037,
+    "tokens_saida": 64,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -468,7 +520,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#feijoada-completa"
     ],
-    "segundos": 1.46,
+    "segundos": 3.38,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1144,
+    "tokens_saida": 58,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -494,7 +549,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#feijoada-completa"
     ],
-    "segundos": 3.04,
+    "segundos": 3.27,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1164,
+    "tokens_saida": 58,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -520,7 +578,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#info"
     ],
-    "segundos": 3.1,
+    "segundos": 3.07,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1143,
+    "tokens_saida": 49,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -546,7 +607,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#omelete-de-queijo-e-espinafre"
     ],
-    "segundos": 1.66,
+    "segundos": 2.34,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1050,
+    "tokens_saida": 65,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -572,7 +636,10 @@
     "fontes_citadas": [
       "doce-atelie#brownie-sem-acucar"
     ],
-    "segundos": 2.62,
+    "segundos": 2.55,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1056,
+    "tokens_saida": 54,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -598,7 +665,10 @@
     "fontes_citadas": [
       "doce-atelie#info"
     ],
-    "segundos": 11.06,
+    "segundos": 3.24,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1105,
+    "tokens_saida": 48,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -624,7 +694,10 @@
     "fontes_citadas": [
       "doce-atelie#fatia-de-bolo-de-cenoura-com-brigadeiro"
     ],
-    "segundos": 2.64,
+    "segundos": 3.12,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1065,
+    "tokens_saida": 64,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -650,7 +723,10 @@
     "fontes_citadas": [
       "doce-atelie#cappuccino-cremoso"
     ],
-    "segundos": 0.91,
+    "segundos": 3.3,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1001,
+    "tokens_saida": 63,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -676,7 +752,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#info"
     ],
-    "segundos": 0.94,
+    "segundos": 0.98,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1413,
+    "tokens_saida": 56,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -698,20 +777,22 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "resposta": "Os restaurantes que abrem às segundas-feiras são: Brasa & Pão, Sakura Nori e Cantina Dona Lurdes.",
+    "resposta": "Os restaurantes que abrem às segundas-feiras são: Brasa & Pão, Sakura Nori, Cantina Dona Lurdes e Raiz Verde.",
     "fontes_citadas": [
       "brasa-e-pao#info",
       "sakura-nori#info",
-      "cantina-dona-lurdes#info"
+      "cantina-dona-lurdes#info",
+      "raiz-verde#info"
     ],
-    "segundos": 1.49,
-    "resposta_ok": false,
+    "segundos": 2.35,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1503,
+    "tokens_saida": 99,
+    "resposta_ok": true,
     "citacao_ok": true,
-    "faltou": [
-      "raiz verde"
-    ],
+    "faltou": [],
     "proibido": [],
-    "ok": false
+    "ok": true
   },
   {
     "pergunta": "Qual o telefone do Sakura Nori?",
@@ -728,7 +809,10 @@
     ],
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 0.85,
+    "segundos": 2.48,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1114,
+    "tokens_saida": 26,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -750,7 +834,10 @@
     ],
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 1.04,
+    "segundos": 4.44,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1135,
+    "tokens_saida": 26,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -772,7 +859,10 @@
     ],
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 2.03,
+    "segundos": 2.98,
+    "chamadas_llm": 1,
+    "tokens_entrada": 1030,
+    "tokens_saida": 26,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],

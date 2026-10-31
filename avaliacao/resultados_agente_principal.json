@@ -19,7 +19,10 @@
     "fontes_citadas": [
       "forno-da-vila#margherita"
     ],
-    "segundos": 6.46,
+    "segundos": 4.89,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2441,
+    "tokens_saida": 55,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -46,7 +49,10 @@
     "fontes_citadas": [
       "forno-da-vila#info"
     ],
-    "segundos": 3.61,
+    "segundos": 4.51,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2173,
+    "tokens_saida": 73,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -73,7 +79,10 @@
     "fontes_citadas": [
       "forno-da-vila#info"
     ],
-    "segundos": 6.91,
+    "segundos": 2.32,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2177,
+    "tokens_saida": 48,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -101,7 +110,10 @@
       "forno-da-vila#calabresa-da-casa",
       "forno-da-vila#info"
     ],
-    "segundos": 12.72,
+    "segundos": 8.21,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2611,
+    "tokens_saida": 105,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -128,7 +140,10 @@
     "fontes_citadas": [
       "forno-da-vila#diavola"
     ],
-    "segundos": 10.47,
+    "segundos": 2.8,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2046,
+    "tokens_saida": 72,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -155,7 +170,10 @@
     "fontes_citadas": [
       "sakura-nori#info"
     ],
-    "segundos": 27.97,
+    "segundos": 1.28,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2125,
+    "tokens_saida": 51,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -182,7 +200,10 @@
     "fontes_citadas": [
       "sakura-nori#info"
     ],
-    "segundos": 31.58,
+    "segundos": 6.05,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2129,
+    "tokens_saida": 52,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -209,7 +230,10 @@
     "fontes_citadas": [
       "sakura-nori#rodizio-completo"
     ],
-    "segundos": 2.47,
+    "segundos": 9.01,
+    "chamadas_llm": 3,
+    "tokens_entrada": 4019,
+    "tokens_saida": 89,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -238,7 +262,10 @@
       "sakura-nori#mochi-de-morango",
       "sakura-nori#yakisoba-de-legumes"
     ],
-    "segundos": 1.62,
+    "segundos": 3.41,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2221,
+    "tokens_saida": 134,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -265,7 +292,10 @@
     "fontes_citadas": [
       "raiz-verde#info"
     ],
-    "segundos": 1.66,
+    "segundos": 4.81,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2101,
+    "tokens_saida": 56,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -287,7 +317,7 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "passos": "filtrar_pratos({\"etiquetas\": [\"sem glúten\"], \"restaurante\": \"Raiz Verde\"})",
+    "passos": "filtrar_pratos({\"restaurante\": \"Raiz Verde\", \"etiquetas\": [\"sem glúten\"]})",
     "resposta": "Os pratos sem glúten disponíveis no Raiz Verde são:\n\n*   Kombucha da Casa (R$ 14,00)\n*   Salada Tropical (R$ 29,00)\n*   Bowl de Grão-de-Bico (R$ 39,00)\n*   Moqueca de Banana-da-Terra (R$ 48,00)\n*   Lasanha de Berinjela (R$ 52,00)",
     "fontes_citadas": [
       "raiz-verde#kombucha-da-casa",
@@ -296,7 +326,10 @@
       "raiz-verde#moqueca-de-banana-da-terra",
       "raiz-verde#lasanha-de-berinjela"
     ],
-    "segundos": 3.82,
+    "segundos": 7.73,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2423,
+    "tokens_saida": 213,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -318,12 +351,15 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "passos": "buscar_cardapio({\"consulta\": \"Lasanha de Berinjela do Raiz Verde ingredientes alergênicos\"})",
-    "resposta": "Não, você não pode comer a Lasanha de Berinjela do Raiz Verde, pois ela contém castanha de caju e amêndoa em sua composição.",
+    "passos": "buscar_cardapio({\"consulta\": \"Lasanha de Berinjela Raiz Verde ingredientes alergênicos\"})",
+    "resposta": "Não, você não pode comer a Lasanha de Berinjela do Raiz Verde, pois ela contém castanhas e amêndoas em sua composição.",
     "fontes_citadas": [
       "raiz-verde#lasanha-de-berinjela"
     ],
-    "segundos": 1.86,
+    "segundos": 4.57,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2595,
+    "tokens_saida": 80,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -345,10 +381,13 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "passos": "filtrar_pratos({\"etiquetas\": [\"vegana\"], \"restaurante\": \"Brasa & Pão\"})",
+    "passos": "filtrar_pratos({\"restaurante\": \"Brasa & Pão\", \"etiquetas\": [\"vegana\"]})",
     "resposta": "Não, não há hambúrgueres veganos no restaurante Brasa & Pão.",
     "fontes_citadas": [],
-    "segundos": 1.82,
+    "segundos": 5.81,
+    "chamadas_llm": 2,
+    "tokens_entrada": 1970,
+    "tokens_saida": 55,
     "resposta_ok": false,
     "citacao_ok": false,
     "faltou": [
@@ -372,17 +411,21 @@
     ],
     "busca_ok": true,
     "busca_recall": 1.0,
-    "passos": "filtrar_pratos({\"restaurante\": \"Brasa & Pão\", \"etiquetas\": [\"picante\"]})",
+    "passos": "filtrar_pratos({\"etiquetas\": [\"picante\"], \"restaurante\": \"Brasa & Pão\"})",
     "resposta": "O hambúrguer picante da Brasa & Pão é o Frango Crispy, que custa R$ 36,00.",
     "fontes_citadas": [
       "brasa-e-pao#frango-crispy"
     ],
-    "segundos": 2.68,
+    "segundos": 4.83,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2061,
+    "tokens_saida": 80,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
     "proibido": [],
-    "ok": true
+    "ok": true,
+    "refeita": true
   },
   {
     "pergunta": "Como funciona o happy hour da Brasa & Pão?",
@@ -404,7 +447,10 @@
     "fontes_citadas": [
       "brasa-e-pao#info"
     ],
-    "segundos": 3.88,
+    "segundos": 43.23,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2150,
+    "tokens_saida": 71,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -431,12 +477,16 @@
     "fontes_citadas": [
       "brasa-e-pao#info"
     ],
-    "segundos": 3.73,
+    "segundos": 6.39,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2156,
+    "tokens_saida": 54,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
     "proibido": [],
-    "ok": true
+    "ok": true,
+    "refeita": true
   },
   {
     "pergunta": "Quanto custa o Combo Kids e até que idade ele vale?",
@@ -458,7 +508,10 @@
     "fontes_citadas": [
       "brasa-e-pao#combo-kids"
     ],
-    "segundos": 14.97,
+    "segundos": 46.69,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2495,
+    "tokens_saida": 68,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -485,7 +538,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#info"
     ],
-    "segundos": 1.54,
+    "segundos": 10.88,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2155,
+    "tokens_saida": 55,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -512,7 +568,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#feijoada-completa"
     ],
-    "segundos": 4.53,
+    "segundos": 8.13,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2556,
+    "tokens_saida": 66,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -539,7 +598,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#info"
     ],
-    "segundos": 2.27,
+    "segundos": 8.62,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2153,
+    "tokens_saida": 60,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -566,7 +628,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#omelete-de-queijo-e-espinafre"
     ],
-    "segundos": 3.46,
+    "segundos": 8.98,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2088,
+    "tokens_saida": 105,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -593,7 +658,10 @@
     "fontes_citadas": [
       "doce-atelie#brownie-sem-acucar"
     ],
-    "segundos": 4.02,
+    "segundos": 10.35,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2531,
+    "tokens_saida": 66,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -620,12 +688,16 @@
     "fontes_citadas": [
       "doce-atelie#info"
     ],
-    "segundos": 7.13,
+    "segundos": 11.64,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2121,
+    "tokens_saida": 61,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
     "proibido": [],
-    "ok": true
+    "ok": true,
+    "refeita": true
   },
   {
     "pergunta": "Quanto custa o bolo de cenoura inteiro?",
@@ -647,7 +719,10 @@
     "fontes_citadas": [
       "doce-atelie#fatia-de-bolo-de-cenoura-com-brigadeiro"
     ],
-    "segundos": 5.06,
+    "segundos": 27.77,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2519,
+    "tokens_saida": 75,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -674,7 +749,10 @@
     "fontes_citadas": [
       "doce-atelie#cappuccino-cremoso"
     ],
-    "segundos": 4.84,
+    "segundos": 4.2,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2522,
+    "tokens_saida": 76,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -701,7 +779,10 @@
     "fontes_citadas": [
       "cantina-dona-lurdes#info"
     ],
-    "segundos": 5.92,
+    "segundos": 6.8,
+    "chamadas_llm": 2,
+    "tokens_entrada": 3048,
+    "tokens_saida": 55,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -731,7 +812,10 @@
       "raiz-verde#info",
       "sakura-nori#info"
     ],
-    "segundos": 6.86,
+    "segundos": 14.07,
+    "chamadas_llm": 2,
+    "tokens_entrada": 3050,
+    "tokens_saida": 180,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -754,7 +838,10 @@
     "passos": "info_restaurantes({\"restaurante\": \"Sakura Nori\"})",
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 22.93,
+    "segundos": 18.61,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2121,
+    "tokens_saida": 43,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -777,7 +864,10 @@
     "passos": "buscar_cardapio({\"consulta\": \"lasanha à bolonhesa Cantina Dona Lurdes\"})",
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 10.6,
+    "segundos": 6.9,
+    "chamadas_llm": 2,
+    "tokens_entrada": 2640,
+    "tokens_saida": 44,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],
@@ -800,7 +890,10 @@
     "passos": "nenhuma ferramenta",
     "resposta": "Não encontrei essa informação nos cardápios.",
     "fontes_citadas": [],
-    "segundos": 4.27,
+    "segundos": 2.57,
+    "chamadas_llm": 1,
+    "tokens_entrada": 959,
+    "tokens_saida": 10,
     "resposta_ok": true,
     "citacao_ok": true,
     "faltou": [],

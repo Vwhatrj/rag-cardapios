@@ -7,7 +7,9 @@
 | Resposta correta | 91% (10/11) |
 | Fonte citada corretamente | 91% (10/11) |
 | **Aprovada (resposta + fonte)** | **91% (10/11)** |
-| Tempo de resposta (mediana · pior) | 3.2 s · 42.4 s |
+| Tempo de resposta (mediana · pior) | 9.6 s · 11.5 s |
+| Chamadas ao LLM por pergunta (média · máx) | 2.0 · 2 |
+| Tokens por pergunta (média: entrada + saída) | 2.547 + 150 |
 | Refeitas por erro do Gemini · ainda com erro | 0 · 0 |
 
 ## Por tipo de pergunta

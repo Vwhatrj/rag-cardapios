@@ -67,12 +67,12 @@ Resultado com o modelo padrão ([relatório completo](avaliacao/relatorio.md)):
 
 | Métrica | `gemini-3.1-flash-lite` |
 |---|---|
-| Resposta correta | 97% (29/30) |
-| Fonte citada corretamente | 100% (30/30) |
+| Aprovadas (resposta + fonte), em 3 execuções | 100%, 97% e 100% (30, 29 e 30 de 30) |
+| Fonte citada corretamente | 100% nas 3 execuções |
 | Recusou as 3 perguntas fora do escopo, incluindo o *prompt injection* | 3/3 |
-| Tempo de resposta (mediana · pior) | 2,2 s · 11,1 s |
+| Chamadas ao LLM · tokens por pergunta | 1 · ~1.180 |
 
-A única falha foi numa comparação entre restaurantes. Na lista dos que abrem às segundas, faltou o Raiz Verde, que abre "todos os dias". Ou seja, o modelo não inferiu que "todos os dias" inclui segunda-feira.
+Na execução com 97%, a falha foi numa comparação entre restaurantes. Na lista dos que abrem às segundas, faltou o Raiz Verde, que abre "todos os dias". Ou seja, o modelo nem sempre infere que "todos os dias" inclui segunda-feira. Isso mostra que a mesma pergunta pode passar numa execução e falhar em outra.
 
 ### Escolhendo o modelo: mais novo não é melhor
 
@@ -80,7 +80,7 @@ A primeira versão escolhia sozinha o Gemini "flash" mais recente. A avaliação
 
 | Modelo | Aprovadas | Tempo (mediana) | Observação |
 |---|---|---|---|
-| **`gemini-3.1-flash-lite`** | **100% e 97%** (2 execuções) | ~2 s | Modelo escolhido |
+| **`gemini-3.1-flash-lite`** | **100%, 97% e 100%** (3 execuções) | ~2 s | Modelo escolhido |
 | `gemini-3.5-flash-lite` (mais novo) | 93% | ~1 s | Respondeu "não encontrei" na pegadinha do vegano, em vez de explicar que o Veggie leva queijo, e esqueceu um restaurante numa lista |
 | `gemini-3.8-flash` (maior) | — | ~30 s | Na camada gratuita: **20 pedidos por dia**. A cota acabou na primeira avaliação |
 
@@ -118,9 +118,15 @@ Os dois foram avaliados com o mesmo modelo nas 30 perguntas originais e em 11 pe
 
 | | RAG simples | **Agente** |
 |---|---|---|
-| 30 perguntas principais | 97% | **97%** (não piorou) |
-| 11 perguntas de agregação | 27% | **91%** |
-| Tempo de resposta (mediana) | ~2 s | ~3–5 s (2 ou mais chamadas ao Gemini por pergunta) |
+| 30 perguntas principais | 97–100% (29 ou 30 de 30, conforme a execução) | **97% (29 de 30)**: empatado, não piorou |
+| 11 perguntas de agregação | 27% (3 de 11) | **91% (10 de 11)** |
+| Chamadas ao LLM por pergunta | 1 | 2,0 em média (máximo 3) |
+| Tokens por pergunta (entrada + saída) | ~1.120 + 60–90 | ~2.350–2.550 + 75–150 |
+| Tempo de resposta (mediana) | ~2–7 s | ~3–10 s |
+
+Com só 11 perguntas de agregação, cada uma vale 9 pontos percentuais; por isso os números absolutos estão ao lado. Nas 30 principais, a diferença de uma pergunta está **dentro da variação**: o próprio RAG simples fez 97% numa execução e 100% em outra. Já 3 contra 10 acertos em 11 é grande demais para ser variação.
+
+**Custo:** o agente faz o dobro de chamadas e gasta cerca de 2× os tokens, porque cada chamada leva a descrição das ferramentas e o histórico da conversa. Esse custo compra 27% → 91% nas agregações; nas outras perguntas, ele não traz ganho. Daí a ideia do roteador, em [Decisões e limitações](#decisões-e-limitações). Os tempos variaram bastante ao longo do dia por causa da carga nos servidores do Gemini (houve vários erros 503), então servem como ordem de grandeza, não como medida precisa.
 
 Relatórios: [RAG nas agregações](avaliacao/relatorio_rag_agregacao.md) · [agente nas agregações](avaliacao/relatorio_agente_agregacao.md) · [agente nas principais](avaliacao/relatorio_agente_principal.md).
 
@@ -143,7 +149,7 @@ copy .env.example .env          # e coloque sua GEMINI_API_KEY (grátis no AI St
 | Comando | O que faz |
 |---|---|
 | `uvicorn app.main:app --reload` | Sobe a API. A documentação interativa fica em http://127.0.0.1:8000/docs |
-| `pytest` | 49 testes em ~15 s, com um LLM falso (inclusive simulando chamadas de ferramenta): sem internet e sem gastar cota |
+| `pytest` | 50 testes em ~15 s, com um LLM falso (inclusive simulando chamadas de ferramenta): sem internet e sem gastar cota |
 | `python -m avaliacao.avaliar --so-busca` | Avalia só a busca (não usa o Gemini) |
 | `python -m avaliacao.avaliar` | Avaliação completa do RAG simples, com o Gemini |
 | `python -m avaliacao.avaliar --modo agente --conjunto agregacao` | Avalia o agente nas perguntas de agregação (combine `--modo rag/agente` com `--conjunto principal/agregacao`) |

@@ -9,8 +9,10 @@
 | Resposta correta | 27% (3/11) |
 | Fonte citada corretamente | 82% (9/11) |
 | **Aprovada (resposta + fonte)** | **27% (3/11)** |
-| Tempo de resposta (mediana · pior) | 11.8 s · 95.2 s |
-| Refeitas por erro do Gemini · ainda com erro | 0 · 0 |
+| Tempo de resposta (mediana · pior) | 6.6 s · 58.5 s |
+| Chamadas ao LLM por pergunta (média · máx) | 1.0 · 1 |
+| Tokens por pergunta (média: entrada + saída) | 1.122 + 87 |
+| Refeitas por erro do Gemini · ainda com erro | 1 · 0 |
 
 ## Por tipo de pergunta
 
@@ -38,12 +40,12 @@
 
 **Quantos itens veganos existem somando todos os restaurantes?** (contagem)
 - Busca não trouxe todos os trechos esperados. Recuperados: raiz-verde#info, raiz-verde#salada-tropical, raiz-verde#hamburguer-de-feijao-preto, raiz-verde#moqueca-de-banana-da-terra, raiz-verde#prato-do-dia, raiz-verde#kombucha-da-casa, sakura-nori#yakisoba-de-legumes, raiz-verde#lasanha-de-berinjela
-- Resposta: Existem 7 itens veganos listados: Salada Tropical, Hambúrguer de Feijão-Preto, Moqueca de Banana-da-Terra, Prato do Dia, Kombucha da Casa e Lasanha de Berinjela no restaurante Raiz Verde, além do Yakisoba de Legumes no restaurante Sakura Nori.
+- Resposta: Existem 7 itens veganos listados nos cardápios: Salada Tropical, Hambúrguer de Feijão-Preto, Moqueca de Banana-da-Terra, Prato do Dia, Kombucha da Casa e Lasanha de Berinjela no Raiz Verde, além do Yakisoba de Legumes no Sakura Nori.
 - Faltou: 15
 
 **Quais pratos sem glúten custam até R$ 30?** (lista completa)
 - Busca não trouxe todos os trechos esperados. Recuperados: cantina-dona-lurdes#bife-acebolado, cantina-dona-lurdes#frango-grelhado-com-legumes, cantina-dona-lurdes#omelete-de-queijo-e-espinafre, cantina-dona-lurdes#feijoada-completa, sakura-nori#mochi-de-morango, brasa-e-pao#classico, cantina-dona-lurdes#peixe-a-delicia, cantina-dona-lurdes#pudim-de-leite
-- Resposta: Os pratos sem glúten que custam até R$ 30 são: Frango Grelhado com Legumes (R$ 28,00) e Omelete de Queijo e Espinafre (R$ 25,00) na Cantina Dona Lurdes, e o Mochi de Morango (R$ 18,00) no Sakura Nori.
+- Resposta: Os pratos sem glúten que custam até R$ 30 são: Frango Grelhado com Legumes (R$ 28,00) e Omelete de Queijo e Espinafre (R$ 25,00) na Cantina Dona Lurdes, e Mochi de Morango (R$ 18,00) no Sakura Nori.
 - Faltou: pudim, salada tropical, pao de queijo
 
 **Tenho intolerância a lactose: quais hambúrgueres da Brasa & Pão posso pedir?** (lista vazia)
