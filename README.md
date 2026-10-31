@@ -4,6 +4,8 @@ API em **Python + FastAPI** que responde perguntas sobre cardápios de restauran
 
 Tudo roda com custo zero: embeddings locais e a camada gratuita do Gemini.
 
+<img src="docs/post-linkedin.png" alt="Pergunta 'Quanto fica uma pizza Calabresa com borda recheada no Forno da Vila?' e a resposta real da API: R$ 61,00 (R$ 52,00 da pizza mais R$ 9,00 da borda), citando duas fontes" width="720">
+
 ```http
 POST /perguntar
 {"pergunta": "Quanto fica uma Calabresa com borda recheada no Forno da Vila?"}
