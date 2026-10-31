@@ -38,7 +38,7 @@
   {"pergunta": "Quanto custa o Combo Kids e até que idade ele vale?", "tipo": "fato simples",
    "fontes": ["brasa-e-pao#combo-kids"], "deve_conter": [["29"], ["10 anos"]]},
   {"pergunta": "Em que dia tem feijoada na Cantina Dona Lurdes?", "tipo": "fato simples",
-   "fontes": ["cantina-dona-lurdes#feijoada-completa"], "deve_conter": [["sabado"]]},
+   "fontes": ["cantina-dona-lurdes#feijoada-completa", "cantina-dona-lurdes#info"], "deve_conter": [["sabado"]]},
   {"pergunta": "Quanto custa a feijoada para duas pessoas?", "tipo": "fato simples",
    "fontes": ["cantina-dona-lurdes#feijoada-completa"], "deve_conter": [["82"]]},
   {"pergunta": "Qual o pedido mínimo da Cantina Dona Lurdes para delivery?", "tipo": "fato simples",

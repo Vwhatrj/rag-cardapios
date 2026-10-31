@@ -20,7 +20,16 @@ def slug(texto: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", sem_acento.lower()).strip("-")
 
 
-def ler_cardapio(caminho: Path) -> list[Trecho]:
+@dataclass(frozen=True)
+class CardapioLido:
+    base: str                                # nome do arquivo sem extensão, prefixo dos ids
+    restaurante: str
+    tipo: str
+    info: list[str]                          # linhas "Chave: valor" das informações gerais
+    pratos: list[tuple[str, list[str]]]      # (nome do prato, linhas "Chave: valor")
+
+
+def ler_markdown(caminho: Path) -> CardapioLido:
     restaurante, tipo = "", ""
     info: list[str] = []
     pratos: list[tuple[str, list[str]]] = []
@@ -42,13 +51,16 @@ def ler_cardapio(caminho: Path) -> list[Trecho]:
 
     if not restaurante:
         raise ValueError(f"{caminho.name}: falta o título '# Nome do restaurante'")
+    return CardapioLido(caminho.stem, restaurante, tipo, info, pratos)
 
-    base = caminho.stem
+
+def ler_cardapio(caminho: Path) -> list[Trecho]:
+    c = ler_markdown(caminho)
     # O nome e o tipo do restaurante vão em todo trecho: sem isso, "Margherita: R$ 49" perde o contexto
-    cabecalho = f"{restaurante} ({tipo})" if tipo else restaurante
-    trechos = [Trecho(f"{base}#info", restaurante, "Informações gerais", f"{cabecalho} — informações gerais\n" + "\n".join(info))]
-    for nome, campos in pratos:
-        trechos.append(Trecho(f"{base}#{slug(nome)}", restaurante, nome, f"{cabecalho} — {nome}\n" + "\n".join(campos)))
+    cabecalho = f"{c.restaurante} ({c.tipo})" if c.tipo else c.restaurante
+    trechos = [Trecho(f"{c.base}#info", c.restaurante, "Informações gerais", f"{cabecalho} — informações gerais\n" + "\n".join(c.info))]
+    for nome, campos in c.pratos:
+        trechos.append(Trecho(f"{c.base}#{slug(nome)}", c.restaurante, nome, f"{cabecalho} — {nome}\n" + "\n".join(campos)))
     return trechos
 
 

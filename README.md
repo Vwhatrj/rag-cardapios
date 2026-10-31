@@ -2,6 +2,8 @@
 
 API em **Python + FastAPI** que responde perguntas sobre cardápios de restaurantes usando **RAG** (*Retrieval-Augmented Generation*): primeiro busca os trechos relevantes por similaridade semântica, depois pede ao **Gemini** uma resposta baseada só nesses trechos, **citando as fontes**. Se a informação não estiver nos cardápios, a API diz que não encontrou em vez de inventar.
 
+Há também um **agente com ferramentas** (`POST /agente`): o próprio Gemini decide quando filtrar a tabela de pratos, buscar trechos ou consultar horários e entrega. Ele resolve perguntas como "qual a sobremesa mais barata?" ou "quantos itens veganos existem?", em que o RAG simples falha: [veja a comparação](#agente-com-ferramentas).
+
 Tudo roda com custo zero: embeddings locais e a camada gratuita do Gemini.
 
 <img src="docs/swagger.png" alt="Documentação interativa (/docs) executando POST /perguntar com 'Tenho alergia a castanhas. Posso comer a Lasanha de Berinjela do Raiz Verde?'. Resposta 200: 'Não, a Lasanha de Berinjela do Raiz Verde contém castanhas e amêndoa, que são listadas como alergênicos.', com a fonte raiz-verde#lasanha-de-berinjela" width="760">
@@ -88,6 +90,47 @@ Uma ressalva honesta: com 30 perguntas, cada uma vale 3,3 pontos, e o mesmo mode
 
 A checagem é por palavras-chave (fatos que **devem** aparecer e frases que **não podem** aparecer), sem acento e sem diferenciar maiúsculas. É determinística e auditável: dá para ver exatamente por que cada resposta passou ou falhou. Usar outro LLM como juiz seria mais flexível, mas também menos previsível.
 
+## Agente com ferramentas
+
+O RAG simples busca **uma vez**, antes do modelo, e o modelo só vê os 8 trechos mais parecidos com a pergunta. Isso falha em perguntas de **agregação**, como "o mais barato", "todos os que..." e "quantos". Nelas a resposta depende de olhar *todos* os pratos, e a pergunta não se parece com nenhum deles em particular.
+
+No `POST /agente`, o Gemini recebe três ferramentas e decide sozinho quais chamar, quantas vezes e em que ordem (`app/agente.py`, `app/ferramentas.py`):
+
+| Ferramenta | O que faz |
+|---|---|
+| `filtrar_pratos(preco_max, etiquetas, sem_alergenicos, categoria, restaurante, ordenar_por, …)` | Filtro **exato** sobre a tabela completa de pratos, lida dos mesmos `.md` (`app/catalogo.py`) |
+| `buscar_cardapio(consulta, k)` | A busca semântica do RAG simples, agora como uma ferramenta entre outras |
+| `info_restaurantes(restaurante)` | Horários, entrega, taxa e formas de pagamento |
+
+O loop é: o modelo pede uma ferramenta, o código executa e devolve o resultado, e isso se repete até o modelo responder. O limite é de 6 passos. A resposta traz os **passos** que o agente deu, e as fontes citadas são validadas contra o que as ferramentas realmente devolveram:
+
+```json
+{
+  "resposta": "A sobremesa mais barata é o Pudim de Leite, da Cantina Dona Lurdes, por R$ 10,00.",
+  "fontes": [{"id": "cantina-dona-lurdes#pudim-de-leite", "...": "..."}],
+  "passos": [{"ferramenta": "filtrar_pratos", "argumentos": {"categoria": "sobremesa", "ordenar_por": "preco", "limite": 1}, "resultados": 1}]
+}
+```
+
+### RAG simples × agente
+
+Os dois foram avaliados com o mesmo modelo nas 30 perguntas originais e em 11 perguntas de agregação. O gabarito dessas 11 é **calculado a partir dos próprios dados** ([`avaliacao/gerar_agregacao.py`](avaliacao/gerar_agregacao.py)), não escrito à mão.
+
+| | RAG simples | **Agente** |
+|---|---|---|
+| 30 perguntas principais | 97% | **97%** (não piorou) |
+| 11 perguntas de agregação | 27% | **91%** |
+| Tempo de resposta (mediana) | ~2 s | ~3–5 s (2 ou mais chamadas ao Gemini por pergunta) |
+
+Relatórios: [RAG nas agregações](avaliacao/relatorio_rag_agregacao.md) · [agente nas agregações](avaliacao/relatorio_agente_agregacao.md) · [agente nas principais](avaliacao/relatorio_agente_principal.md).
+
+**Como o RAG simples erra as agregações:** perguntado sobre "a sobremesa mais barata", ele respondeu Milkshake (R$ 24), porque a busca trouxe hambúrgueres e não trouxe o Pudim (R$ 10). Disse que o suco era "o único item abaixo de R$ 15", quando são 7. Contou 7 itens veganos, quando são 15. Nos três casos ele respondeu com confiança, com base no que a busca deixou ver. O agente chamou `filtrar_pratos(preco_max=14.99)` e listou os 7.
+
+**O que o agente ainda erra, e por quê:**
+- **Ele perde nuance quando confia demais no filtro.** Em "tem hambúrguer vegano na Brasa & Pão?", ele filtrou por `vegana`, não achou nada e respondeu só "não há". O RAG simples, que lê o texto do cardápio, explicava que o único vegetariano leva queijo coalho. O filtro é exato, mas mostra menos do que o texto.
+- **A checagem por palavras-chave tem limite.** "Não encontrei hambúrgueres sem lactose" está certo (nenhum serve), mas foi reprovado porque contém a frase "não encontrei", proibida nesse caso para pegar respostas contraditórias. Mantive a régua como estava antes do resultado: ajustá-la depois, só para o número subir, invalidaria a comparação.
+- **Um erro estava no meu gabarito, e não no agente.** Ele citou as informações gerais da Cantina para "em que dia tem feijoada", e elas dizem mesmo "sábado, com feijoada". Corrigi o gabarito e reavaliei as respostas já salvas com `--recalcular`, sem chamar o modelo de novo.
+
 ## Como rodar
 
 ```bash
@@ -100,9 +143,13 @@ copy .env.example .env          # e coloque sua GEMINI_API_KEY (grátis no AI St
 | Comando | O que faz |
 |---|---|
 | `uvicorn app.main:app --reload` | Sobe a API. A documentação interativa fica em http://127.0.0.1:8000/docs |
-| `pytest` | 35 testes em ~15 s, com um LLM falso: sem internet e sem gastar cota |
+| `pytest` | 49 testes em ~15 s, com um LLM falso (inclusive simulando chamadas de ferramenta): sem internet e sem gastar cota |
 | `python -m avaliacao.avaliar --so-busca` | Avalia só a busca (não usa o Gemini) |
-| `python -m avaliacao.avaliar` | Avaliação completa, com o Gemini |
+| `python -m avaliacao.avaliar` | Avaliação completa do RAG simples, com o Gemini |
+| `python -m avaliacao.avaliar --modo agente --conjunto agregacao` | Avalia o agente nas perguntas de agregação (combine `--modo rag/agente` com `--conjunto principal/agregacao`) |
+| `python -m avaliacao.avaliar --recalcular ...` | Reavalia respostas já salvas com o gabarito atual, sem chamar o Gemini |
+
+Perguntas que terminam em erro do Gemini (sobrecarga, timeout) são refeitas no fim da avaliação, e o relatório informa quantas foram refeitas: erro de infraestrutura não é erro de qualidade.
 
 ## Estrutura
 
@@ -111,17 +158,21 @@ app/
   cardapios.py   lê os .md e gera os trechos
   busca.py       embeddings + busca por cosseno (com cache em disco)
   llm.py         cliente REST do Gemini (modelo fixado, retentativas em 429/timeout, para na cota diária)
-  rag.py         prompt, interpretação do JSON e validação das fontes
-  main.py        API FastAPI
+  rag.py         RAG simples: prompt, interpretação do JSON e validação das fontes
+  catalogo.py    os mesmos cardápios como tabela (preço em número, etiquetas, alergênicos) + filtro
+  ferramentas.py declarações e implementação das 3 ferramentas do agente
+  agente.py      loop do agente: chamadas de ferramenta até a resposta final
+  main.py        API FastAPI (/perguntar e /agente)
 dados/cardapios/ 6 restaurantes fictícios, 50 pratos
-tests/           pytest (cardápios, busca, RAG, API, avaliação)
-avaliacao/       perguntas com resposta conhecida + script de relatório
+tests/           pytest (cardápios, catálogo, busca, RAG, agente, API, avaliação)
+avaliacao/       perguntas com resposta conhecida, gerador do gabarito de agregação e script de relatório
 ```
 
 ## Decisões e limitações
 
 - **Os cardápios são fictícios.** Assim não há marca de terceiros e dá para criar casos difíceis de propósito.
 - **Falhas do Gemini são tratadas.** Limite por minuto (429), indisponibilidade (503) e timeout geram novas tentativas com espera crescente. A cota diária esgotada não gera nova tentativa, porque só volta a funcionar no dia seguinte. Para quem chama, a API devolve 502 com a mensagem do erro.
-- **O LLM é injetado na API** (`criar_app(llm=...)`). Os testes usam um LLM falso e rodam offline. Para trocar o Gemini por outro modelo, basta implementar `gerar(sistema, prompt)`.
-- **Limitação: agregações.** Perguntas como "qual o prato mais barato de todos?" dependem de a busca trazer todos os pratos. Isso não escala: com centenas de restaurantes, o caminho seria extrair os campos (preço, etiquetas) para uma tabela e responder esse tipo de pergunta com filtros, deixando a busca semântica para o resto.
+- **O LLM é injetado na API** (`criar_app(llm=...)`). Os testes usam um LLM falso e rodam offline. Para trocar o Gemini por outro modelo, basta implementar `gerar(sistema, prompt)` e, para o agente, `conversar(sistema, conteudos, ferramentas)`.
+- **Agregações: resolvidas pelo agente, não pelo RAG simples.** As duas rotas coexistem: o `/perguntar` faz 1 chamada e é mais rápido; o `/agente` acerta agregações, ao custo de 2 ou mais chamadas por pergunta. Um próximo passo natural é um roteador que mande para o agente só as perguntas que precisam dele.
+- **O agente confia no filtro.** Quando o filtro volta vazio, ele tende a responder "não há" sem procurar alternativas próximas (ex.: um vegetariano quando pediram vegano). Dá para instruí-lo a fazer uma segunda busca nesses casos.
 - **Limitação: cardápios em PDF** ainda não são lidos. Hoje a entrada é Markdown.

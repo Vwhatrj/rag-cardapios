@@ -1,0 +1,244 @@
+[
+ {
+  "pergunta": "Qual a sobremesa mais barata entre todos os restaurantes?",
+  "tipo": "mais barato",
+  "fontes": [
+   "cantina-dona-lurdes#pudim-de-leite"
+  ],
+  "deve_conter": [
+   [
+    "pudim"
+   ],
+   [
+    "10"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Qual o prato mais caro de todos os cardápios?",
+  "tipo": "mais caro",
+  "fontes": [
+   "sakura-nori#rodizio-completo"
+  ],
+  "deve_conter": [
+   [
+    "rodizio"
+   ],
+   [
+    "119,90",
+    "119.90"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Quais itens custam menos de R$ 15?",
+  "tipo": "lista completa",
+  "fontes": [
+   "doce-atelie#cafe-espresso",
+   "forno-da-vila#refrigerante-lata",
+   "cantina-dona-lurdes#suco-natural",
+   "cantina-dona-lurdes#pudim-de-leite",
+   "doce-atelie#cappuccino-cremoso",
+   "raiz-verde#kombucha-da-casa",
+   "sakura-nori#missoshiru"
+  ],
+  "deve_conter": [
+   [
+    "espresso"
+   ],
+   [
+    "refrigerante"
+   ],
+   [
+    "suco"
+   ],
+   [
+    "pudim"
+   ],
+   [
+    "cappuccino"
+   ],
+   [
+    "kombucha"
+   ],
+   [
+    "missoshiru"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Quantos itens veganos existem somando todos os restaurantes?",
+  "tipo": "contagem",
+  "fontes": [
+   "doce-atelie#cafe-espresso",
+   "forno-da-vila#refrigerante-lata",
+   "cantina-dona-lurdes#suco-natural",
+   "raiz-verde#kombucha-da-casa",
+   "sakura-nori#missoshiru",
+   "raiz-verde#brownie-de-cacau",
+   "sakura-nori#mochi-de-morango",
+   "raiz-verde#salada-tropical",
+   "raiz-verde#prato-do-dia",
+   "raiz-verde#bowl-de-grao-de-bico",
+   "raiz-verde#hamburguer-de-feijao-preto",
+   "sakura-nori#yakisoba-de-legumes",
+   "raiz-verde#moqueca-de-banana-da-terra",
+   "raiz-verde#lasanha-de-berinjela",
+   "forno-da-vila#vegana-de-abobrinha"
+  ],
+  "deve_conter": [
+   [
+    "15"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Quais pratos sem glúten custam até R$ 30?",
+  "tipo": "lista completa",
+  "fontes": [
+   "doce-atelie#cafe-espresso",
+   "cantina-dona-lurdes#suco-natural",
+   "cantina-dona-lurdes#pudim-de-leite",
+   "raiz-verde#kombucha-da-casa",
+   "doce-atelie#pao-de-queijo-porcao-com-6",
+   "sakura-nori#mochi-de-morango",
+   "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+   "cantina-dona-lurdes#frango-grelhado-com-legumes",
+   "raiz-verde#salada-tropical"
+  ],
+  "deve_conter": [
+   [
+    "pudim"
+   ],
+   [
+    "salada tropical"
+   ],
+   [
+    "mochi"
+   ],
+   [
+    "pao de queijo"
+   ],
+   [
+    "omelete"
+   ],
+   [
+    "frango grelhado"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Tenho intolerância a lactose: quais hambúrgueres da Brasa & Pão posso pedir?",
+  "tipo": "lista vazia",
+  "fontes": [
+   "brasa-e-pao#classico",
+   "brasa-e-pao#frango-crispy",
+   "brasa-e-pao#veggie-de-cogumelos",
+   "brasa-e-pao#duplo-smash",
+   "brasa-e-pao#bacon-supremo"
+  ],
+  "deve_conter": [
+   [
+    "nenhum",
+    "nao ha",
+    "todos",
+    "nao pode"
+   ]
+  ],
+  "nao_deve_conter": [
+   "nao encontrei"
+  ]
+ },
+ {
+  "pergunta": "Quais restaurantes aceitam vale-refeição?",
+  "tipo": "comparar restaurantes",
+  "fontes": [
+   "cantina-dona-lurdes#info",
+   "raiz-verde#info",
+   "sakura-nori#info"
+  ],
+  "deve_conter": [
+   [
+    "sakura"
+   ],
+   [
+    "raiz verde"
+   ],
+   [
+    "lurdes"
+   ]
+  ],
+  "nao_deve_conter": [
+   "forno da vila aceita",
+   "forno da vila, "
+  ]
+ },
+ {
+  "pergunta": "Quais são todos os pratos picantes?",
+  "tipo": "lista completa",
+  "fontes": [
+   "brasa-e-pao#frango-crispy",
+   "sakura-nori#ceviche-de-peixe-branco",
+   "forno-da-vila#diavola"
+  ],
+  "deve_conter": [
+   [
+    "diavola"
+   ],
+   [
+    "ceviche"
+   ],
+   [
+    "frango crispy"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Qual a pizza salgada vegetariana mais barata do Forno da Vila?",
+  "tipo": "mais barato",
+  "fontes": [
+   "forno-da-vila#margherita"
+  ],
+  "deve_conter": [
+   [
+    "margherita"
+   ],
+   [
+    "49"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Quantos restaurantes fazem entrega?",
+  "tipo": "contagem",
+  "fontes": [
+   "brasa-e-pao#info",
+   "cantina-dona-lurdes#info",
+   "doce-atelie#info",
+   "forno-da-vila#info",
+   "raiz-verde#info",
+   "sakura-nori#info"
+  ],
+  "deve_conter": [
+   [
+    "5",
+    "cinco"
+   ]
+  ]
+ },
+ {
+  "pergunta": "Qual o item vegano mais barato do Raiz Verde?",
+  "tipo": "mais barato",
+  "fontes": [
+   "raiz-verde#kombucha-da-casa"
+  ],
+  "deve_conter": [
+   [
+    "kombucha"
+   ],
+   [
+    "14"
+   ]
+  ]
+ }
+]

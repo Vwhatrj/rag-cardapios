@@ -1,6 +1,6 @@
 # Relatório de avaliação
 
-31/10/2026 · 30 perguntas · k = 8 · modelo `gemini-3.1-flash-lite`
+31/10/2026 · conjunto **principal** · 30 perguntas · modo **rag** · modelo `gemini-3.1-flash-lite`
 
 | Métrica | Resultado |
 |---|---|
@@ -10,6 +10,7 @@
 | Fonte citada corretamente | 100% (30/30) |
 | **Aprovada (resposta + fonte)** | **97% (29/30)** |
 | Tempo de resposta (mediana · pior) | 2.2 s · 11.1 s |
+| Refeitas por erro do Gemini · ainda com erro | 0 · 0 |
 
 ## Por tipo de pergunta
 

@@ -18,6 +18,10 @@ class LLM(Protocol):
     def gerar(self, sistema: str, prompt: str) -> str: ...
 
 
+class LLMComFerramentas(LLM, Protocol):
+    def conversar(self, sistema: str, conteudos: list[dict], ferramentas: list[dict]) -> list[dict]: ...
+
+
 class ErroLLM(RuntimeError):
     pass
 
@@ -75,27 +79,41 @@ class Gemini:
         return [None]
 
     def gerar(self, sistema: str, prompt: str) -> str:
+        """Uma pergunta, uma resposta em JSON (usado pelo RAG simples)."""
+        candidato = self._gerar_conteudo(sistema, [{"role": "user", "parts": [{"text": prompt}]}],
+                                         {"responseMimeType": "application/json"})
+        texto = "".join(p.get("text", "") for p in candidato.get("content", {}).get("parts", []) if not p.get("thought"))
+        if not texto:
+            raise ErroLLM(f"O Gemini não devolveu texto (motivo: {candidato.get('finishReason', 'desconhecido')}).")
+        return texto
+
+    def conversar(self, sistema: str, conteudos: list[dict], ferramentas: list[dict]) -> list[dict]:
+        """Um turno de conversa com ferramentas disponíveis (usado pelo agente).
+
+        Devolve as 'parts' da resposta do modelo como vieram, incluindo chamadas de função e assinaturas de
+        raciocínio: o histórico precisa voltar intacto no próximo turno.
+        """
+        candidato = self._gerar_conteudo(sistema, conteudos, {}, {"tools": [{"functionDeclarations": ferramentas}]})
+        partes = candidato.get("content", {}).get("parts", [])
+        if not partes:
+            raise ErroLLM(f"O Gemini não devolveu resposta (motivo: {candidato.get('finishReason', 'desconhecido')}).")
+        return partes
+
+    def _gerar_conteudo(self, sistema: str, conteudos: list[dict], config_extra: dict, extras: dict | None = None) -> dict:
         opcoes = self._opcoes_pensamento()
         for i, pensamento in enumerate(opcoes):
-            config = {"temperature": 0.1, "responseMimeType": "application/json"}
+            config = {"temperature": 0.1, **config_extra}
             if pensamento:
                 config["thinkingConfig"] = pensamento
-            corpo = {
-                "systemInstruction": {"parts": [{"text": sistema}]},
-                "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-                "generationConfig": config,
-            }
+            corpo = {"systemInstruction": {"parts": [{"text": sistema}]}, "contents": conteudos,
+                     "generationConfig": config, **(extras or {})}
             r = self._post_com_retentativa(f"{API}/models/{self.nome}:generateContent", corpo)
             if r.status_code == 400 and pensamento and i < len(opcoes) - 1:
                 continue  # este modelo não aceita esse parâmetro de raciocínio
             self._pensamento, self._pensamento_definido = pensamento, True
             break
         self._checar(r)
-        candidato = (r.json().get("candidates") or [{}])[0]
-        texto = "".join(p.get("text", "") for p in candidato.get("content", {}).get("parts", []) if not p.get("thought"))
-        if not texto:
-            raise ErroLLM(f"O Gemini não devolveu texto (motivo: {candidato.get('finishReason', 'desconhecido')}).")
-        return texto
+        return (r.json().get("candidates") or [{}])[0]
 
     def _post_com_retentativa(self, url: str, corpo: dict, tentativas: int = 4) -> httpx.Response:
         # A camada gratuita tem limite por minuto e às vezes demora ou cai: em 429/503 ou timeout, espera e tenta de novo

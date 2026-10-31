@@ -1,0 +1,325 @@
+[
+  {
+    "pergunta": "Qual a sobremesa mais barata entre todos os restaurantes?",
+    "tipo": "mais barato",
+    "recuperados": [
+      "brasa-e-pao#frango-crispy",
+      "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+      "brasa-e-pao#classico",
+      "brasa-e-pao#duplo-smash",
+      "brasa-e-pao#bacon-supremo",
+      "brasa-e-pao#milkshake-de-ovomaltine",
+      "sakura-nori#yakisoba-de-legumes",
+      "brasa-e-pao#info"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.0,
+    "resposta": "A sobremesa mais barata é o Milkshake de Ovomaltine, do restaurante Brasa & Pão, por R$ 24,00.",
+    "fontes_citadas": [
+      "brasa-e-pao#milkshake-de-ovomaltine"
+    ],
+    "segundos": 1.32,
+    "resposta_ok": false,
+    "citacao_ok": false,
+    "faltou": [
+      "pudim",
+      "10"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Qual o prato mais caro de todos os cardápios?",
+    "tipo": "mais caro",
+    "recuperados": [
+      "cantina-dona-lurdes#peixe-a-delicia",
+      "sakura-nori#yakisoba-de-legumes",
+      "cantina-dona-lurdes#strogonoff-de-carne",
+      "brasa-e-pao#frango-crispy",
+      "sakura-nori#hot-roll-crocante-10-pecas",
+      "brasa-e-pao#classico",
+      "cantina-dona-lurdes#feijoada-completa",
+      "sakura-nori#rodizio-completo"
+    ],
+    "busca_ok": true,
+    "busca_recall": 1.0,
+    "resposta": "O prato mais caro é o Rodízio Completo do restaurante Sakura Nori, custando R$ 119,90 por pessoa.",
+    "fontes_citadas": [
+      "sakura-nori#rodizio-completo"
+    ],
+    "segundos": 13.11,
+    "resposta_ok": true,
+    "citacao_ok": true,
+    "faltou": [],
+    "proibido": [],
+    "ok": true
+  },
+  {
+    "pergunta": "Quais itens custam menos de R$ 15?",
+    "tipo": "lista completa",
+    "recuperados": [
+      "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+      "cantina-dona-lurdes#frango-grelhado-com-legumes",
+      "brasa-e-pao#combo-kids",
+      "sakura-nori#mochi-de-morango",
+      "cantina-dona-lurdes#suco-natural",
+      "brasa-e-pao#classico",
+      "doce-atelie#pao-de-queijo-porcao-com-6",
+      "cantina-dona-lurdes#peixe-a-delicia"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.14285714285714285,
+    "resposta": "O único item que custa menos de R$ 15,00 é o Suco Natural da Cantina Dona Lurdes, que custa R$ 9,00.",
+    "fontes_citadas": [
+      "cantina-dona-lurdes#suco-natural"
+    ],
+    "segundos": 9.3,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "espresso",
+      "refrigerante",
+      "pudim",
+      "cappuccino",
+      "kombucha",
+      "missoshiru"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Quantos itens veganos existem somando todos os restaurantes?",
+    "tipo": "contagem",
+    "recuperados": [
+      "raiz-verde#info",
+      "raiz-verde#salada-tropical",
+      "raiz-verde#hamburguer-de-feijao-preto",
+      "raiz-verde#moqueca-de-banana-da-terra",
+      "raiz-verde#prato-do-dia",
+      "raiz-verde#kombucha-da-casa",
+      "sakura-nori#yakisoba-de-legumes",
+      "raiz-verde#lasanha-de-berinjela"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.4666666666666667,
+    "resposta": "Existem 7 itens veganos listados: Salada Tropical, Hambúrguer de Feijão-Preto, Moqueca de Banana-da-Terra, Prato do Dia, Kombucha da Casa e Lasanha de Berinjela no restaurante Raiz Verde, além do Yakisoba de Legumes no restaurante Sakura Nori.",
+    "fontes_citadas": [
+      "raiz-verde#salada-tropical",
+      "raiz-verde#hamburguer-de-feijao-preto",
+      "raiz-verde#moqueca-de-banana-da-terra",
+      "raiz-verde#prato-do-dia",
+      "raiz-verde#kombucha-da-casa",
+      "raiz-verde#lasanha-de-berinjela",
+      "sakura-nori#yakisoba-de-legumes"
+    ],
+    "segundos": 13.05,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "15"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Quais pratos sem glúten custam até R$ 30?",
+    "tipo": "lista completa",
+    "recuperados": [
+      "cantina-dona-lurdes#bife-acebolado",
+      "cantina-dona-lurdes#frango-grelhado-com-legumes",
+      "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+      "cantina-dona-lurdes#feijoada-completa",
+      "sakura-nori#mochi-de-morango",
+      "brasa-e-pao#classico",
+      "cantina-dona-lurdes#peixe-a-delicia",
+      "cantina-dona-lurdes#pudim-de-leite"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.4444444444444444,
+    "resposta": "Os pratos sem glúten que custam até R$ 30 são: Frango Grelhado com Legumes (R$ 28,00) e Omelete de Queijo e Espinafre (R$ 25,00) na Cantina Dona Lurdes, e o Mochi de Morango (R$ 18,00) no Sakura Nori.",
+    "fontes_citadas": [
+      "cantina-dona-lurdes#frango-grelhado-com-legumes",
+      "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+      "sakura-nori#mochi-de-morango"
+    ],
+    "segundos": 8.68,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "pudim",
+      "salada tropical",
+      "pao de queijo"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Tenho intolerância a lactose: quais hambúrgueres da Brasa & Pão posso pedir?",
+    "tipo": "lista vazia",
+    "recuperados": [
+      "brasa-e-pao#classico",
+      "brasa-e-pao#combo-kids",
+      "brasa-e-pao#veggie-de-cogumelos",
+      "brasa-e-pao#duplo-smash",
+      "brasa-e-pao#bacon-supremo",
+      "brasa-e-pao#frango-crispy",
+      "brasa-e-pao#info",
+      "brasa-e-pao#milkshake-de-ovomaltine"
+    ],
+    "busca_ok": true,
+    "busca_recall": 1.0,
+    "resposta": "Não encontrei essa informação nos cardápios.",
+    "fontes_citadas": [],
+    "segundos": 5.46,
+    "resposta_ok": false,
+    "citacao_ok": false,
+    "faltou": [
+      "nenhum"
+    ],
+    "proibido": [
+      "nao encontrei"
+    ],
+    "ok": false
+  },
+  {
+    "pergunta": "Quais restaurantes aceitam vale-refeição?",
+    "tipo": "comparar restaurantes",
+    "recuperados": [
+      "forno-da-vila#info",
+      "sakura-nori#info",
+      "raiz-verde#info",
+      "sakura-nori#mochi-de-morango",
+      "forno-da-vila#refrigerante-lata",
+      "sakura-nori#rodizio-completo",
+      "forno-da-vila#calabresa-da-casa",
+      "sakura-nori#hot-roll-crocante-10-pecas"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.6666666666666666,
+    "resposta": "Os restaurantes que aceitam vale-refeição são o Sakura Nori e o Raiz Verde.",
+    "fontes_citadas": [
+      "sakura-nori#info",
+      "raiz-verde#info"
+    ],
+    "segundos": 11.84,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "lurdes"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Quais são todos os pratos picantes?",
+    "tipo": "lista completa",
+    "recuperados": [
+      "brasa-e-pao#frango-crispy",
+      "forno-da-vila#diavola",
+      "sakura-nori#hot-roll-crocante-10-pecas",
+      "cantina-dona-lurdes#peixe-a-delicia",
+      "cantina-dona-lurdes#omelete-de-queijo-e-espinafre",
+      "cantina-dona-lurdes#frango-grelhado-com-legumes",
+      "sakura-nori#yakisoba-de-legumes",
+      "cantina-dona-lurdes#feijoada-completa"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.6666666666666666,
+    "resposta": "Os pratos picantes são: Frango Crispy do Brasa & Pão e Diavola do Forno da Vila.",
+    "fontes_citadas": [
+      "brasa-e-pao#frango-crispy",
+      "forno-da-vila#diavola"
+    ],
+    "segundos": 7.05,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "ceviche"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Qual a pizza salgada vegetariana mais barata do Forno da Vila?",
+    "tipo": "mais barato",
+    "recuperados": [
+      "forno-da-vila#margherita",
+      "forno-da-vila#vegana-de-abobrinha",
+      "forno-da-vila#quatro-queijos",
+      "forno-da-vila#portuguesa",
+      "forno-da-vila#diavola",
+      "forno-da-vila#calabresa-da-casa",
+      "forno-da-vila#frango-com-catupiry",
+      "forno-da-vila#brigadeiro-com-morango"
+    ],
+    "busca_ok": true,
+    "busca_recall": 1.0,
+    "resposta": "A pizza salgada vegetariana mais barata do Forno da Vila é a Margherita, custando R$ 49,00.",
+    "fontes_citadas": [
+      "forno-da-vila#margherita"
+    ],
+    "segundos": 24.38,
+    "resposta_ok": true,
+    "citacao_ok": true,
+    "faltou": [],
+    "proibido": [],
+    "ok": true
+  },
+  {
+    "pergunta": "Quantos restaurantes fazem entrega?",
+    "tipo": "contagem",
+    "recuperados": [
+      "sakura-nori#info",
+      "brasa-e-pao#info",
+      "cantina-dona-lurdes#info",
+      "sakura-nori#combinado-sakura-20-pecas",
+      "doce-atelie#info",
+      "sakura-nori#rodizio-completo",
+      "sakura-nori#hot-roll-crocante-10-pecas",
+      "raiz-verde#info"
+    ],
+    "busca_ok": false,
+    "busca_recall": 0.8333333333333334,
+    "resposta": "Quatro restaurantes fazem entrega: Sakura Nori, Brasa & Pão, Cantina Dona Lurdes e Doce Ateliê.",
+    "fontes_citadas": [
+      "sakura-nori#info",
+      "brasa-e-pao#info",
+      "cantina-dona-lurdes#info",
+      "doce-atelie#info"
+    ],
+    "segundos": 30.49,
+    "resposta_ok": false,
+    "citacao_ok": true,
+    "faltou": [
+      "5"
+    ],
+    "proibido": [],
+    "ok": false
+  },
+  {
+    "pergunta": "Qual o item vegano mais barato do Raiz Verde?",
+    "tipo": "mais barato",
+    "recuperados": [
+      "raiz-verde#hamburguer-de-feijao-preto",
+      "raiz-verde#lasanha-de-berinjela",
+      "raiz-verde#kombucha-da-casa",
+      "raiz-verde#moqueca-de-banana-da-terra",
+      "raiz-verde#salada-tropical",
+      "raiz-verde#prato-do-dia",
+      "raiz-verde#brownie-de-cacau",
+      "raiz-verde#bowl-de-grao-de-bico"
+    ],
+    "busca_ok": true,
+    "busca_recall": 1.0,
+    "resposta": "O item mais barato do Raiz Verde é o Kombucha da Casa, custando R$ 14,00.",
+    "fontes_citadas": [
+      "raiz-verde#kombucha-da-casa"
+    ],
+    "segundos": 95.22,
+    "resposta_ok": true,
+    "citacao_ok": true,
+    "faltou": [],
+    "proibido": [],
+    "ok": true
+  }
+]
