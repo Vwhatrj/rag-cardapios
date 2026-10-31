@@ -23,6 +23,7 @@ from dotenv import load_dotenv
 
 from app.busca import Indice, embedder_e5
 from app.cardapios import carregar_trechos
+from app.llm import CotaDiariaEsgotada, ErroLLM
 from app.rag import responder
 
 PASTA = Path(__file__).resolve().parent
@@ -81,9 +82,17 @@ def main() -> None:
         if llm:
             if n > 1:
                 time.sleep(args.pausa)
-            r = responder(caso["pergunta"], indice, llm, k=args.k)
-            fontes = [t.id for t in r.fontes]
-            linha |= {"resposta": r.resposta, "fontes_citadas": fontes, **avaliar_resposta(caso, r.resposta, fontes)}
+            inicio = time.perf_counter()
+            try:
+                r = responder(caso["pergunta"], indice, llm, k=args.k)
+                texto, fontes = r.resposta, [t.id for t in r.fontes]
+            except CotaDiariaEsgotada as erro:
+                sys.exit(f"\nAvaliação interrompida na pergunta {n}: {erro}\nNenhum relatório foi gravado; rode de novo amanhã ou com outro modelo.")
+            except ErroLLM as erro:  # uma pergunta com erro conta como falha, sem derrubar a avaliação inteira
+                texto, fontes = f"[ERRO] {erro}", []
+            segundos = round(time.perf_counter() - inicio, 2)
+            linha |= {"resposta": texto, "fontes_citadas": fontes, "segundos": segundos,
+                      **avaliar_resposta(caso, texto, fontes)}
             linha["ok"] = linha["resposta_ok"] and linha["citacao_ok"]
         resultados.append(linha)
         marca = "✓" if linha.get("ok", linha.get("busca_ok", True)) else "✗"
@@ -115,6 +124,8 @@ def gerar_relatorio(resultados: list[dict], k: int, modelo: str | None) -> str:
             f"| Fonte citada corretamente | {pct([r['citacao_ok'] for r in resultados])} |",
             f"| **Aprovada (resposta + fonte)** | **{pct([r['ok'] for r in resultados])}** |",
         ]
+        tempos = sorted(r["segundos"] for r in resultados)
+        linhas.append(f"| Tempo de resposta (mediana · pior) | {tempos[len(tempos) // 2]:.1f} s · {tempos[-1]:.1f} s |")
     por_tipo = defaultdict(list)
     for r in resultados:
         por_tipo[r["tipo"]].append(r)
